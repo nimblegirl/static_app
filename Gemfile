@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+	 source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -14,6 +14,7 @@ group :test do
   	gem 'capybara', '2.1.0'
 end
 
+gem 'minitest'
 # Use SCSS for stylesheets
 gem 'sass-rails', '4.0.5'
 # Use Uglifier as compressor for JavaScript assets
@@ -31,8 +32,6 @@ gem 'turbolinks', '2.5.3'
 gem 'jbuilder', '2.2.6'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '0.4.1',          group: :doc
-
-gem 'pg', '0.15.1'
 
 group :production do 
 	gem 'pg', '0.15.1'
