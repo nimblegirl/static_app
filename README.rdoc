@@ -1,28 +1,22 @@
-== README
+Ruby on Rails Tutorial: first application
+ Ruby on Rails Tutorial Майкл Хартл.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Ошибка ССЛ
 
-Things you may want to cover:
+http://stackoverflow.com/questions/27364008/cant-access-rubygems-possibly-due-to-ssl
 
-* Ruby version
+2. Установка постгреса
 
-* System dependencies
+http://www.enterprisedb.com/products-services-training/pgdownload#windows
 
-* Configuration
+3. Настройка БД
 
-* Database creation
+https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with-postgres
 
-* Database initialization
+4. Деплоймент на Heroku
 
-* How to run the test suite
+http://stackoverflow.com/questions/15443456/windows-heroku-run-rake-dbmigrate-error-usr-bin-env-ruby-exe-no-such-file-o
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+5. In Rails 4.1+, they deprecated db:test:prepare
+ 
+bundle exec rake db:schema:load RAILS_ENV=test
