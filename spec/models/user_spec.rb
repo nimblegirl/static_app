@@ -15,6 +15,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:microposts) }
   
   it { should be_valid }
   it { should_not be_admin }
@@ -100,8 +101,49 @@ describe User do
   	end
   end
   
-   describe "remember_token" do
+  describe "remember_token" do
       before { @user.save }
       its(:remember_token) { should_not be_blank }
+  end
+
+    describe "profile page" do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo") }
+    let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar") }
+
+    before { visit user_path(user) }
+
+    it { should have_content(user.name) }
+    it { should have_title(user.name) }
+
+    describe "microposts" do
+      it { should have_content(m1.content) }
+      it { should have_content(m2.content) }
+      it { should have_content(user.microposts.count) }
     end
+  end
+
+  describe "micropost assotiations" do
+    
+    before { @user.save }
+    let!(:older_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.hour.ago)
+    end
+
+    it " should have the right micropost in the right order " do
+      expect(@user.microposts.to_a).to eq [newer_micropost, older_micropost]
+    end
+
+    it " should destroy assosiated microposts" do
+      microposts = @user.microposts.to_a
+      @user.destroy
+      expect(microposts).not_to be_empty
+      microposts.each do |micropost|
+        expect(Micropost.where(id: micropost.id)).to be_empty
+      end
+    end
+  end
 end
