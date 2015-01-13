@@ -16,6 +16,7 @@ https://www.digitalocean.com/community/tutorials/how-to-setup-ruby-on-rails-with
 4. Деплоймент на Heroku
 
 http://stackoverflow.com/questions/15443456/windows-heroku-run-rake-dbmigrate-error-usr-bin-env-ruby-exe-no-such-file-o
+https://devcenter.heroku.com/articles/git
 
 5. In Rails 4.1+, they deprecated db:test:prepare
  
