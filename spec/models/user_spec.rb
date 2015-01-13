@@ -106,7 +106,7 @@ describe User do
       its(:remember_token) { should_not be_blank }
   end
 
-    describe "profile page" do
+  describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
     let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo") }
     let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar") }
